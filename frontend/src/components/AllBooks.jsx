@@ -10,6 +10,7 @@ export default function AllBooks() {
     const fetchBooks = async () => {
       try {
         const response = await axios.get(`${API}/books`);
+        console.log(response.data);   
         setBooks(response.data);
       } catch (error) {
         console.error("Error fetching books:", error);
@@ -23,13 +24,15 @@ export default function AllBooks() {
     <div>
       <h2>All Books</h2>
 
-      {books.map((book) => (
-        <div key={book._id}>
-          <p>{book.title}</p>
-          {/* <p>Author: {book.author}</p> */}
-        
-        </div>
-      ))}
+      {books.length === 0 ? (
+        <p>No books found.</p>
+      ) : (
+        books.map((book) => (
+          <div key={book._id}>
+            <p>{book.title}</p>
+          </div>
+        ))
+      )}
     </div>
   );
 }
