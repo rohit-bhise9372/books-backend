@@ -63,56 +63,75 @@ export default function AddBookForm() {
       <h2>Add New Book</h2>
 
       <form onSubmit={handleSubmit}>
-        <label>Title</label>
+        <label>Title:</label>
+        <br />
         <input
           type="text"
           name="title"
           value={formData.title}
           onChange={handleChange}
         />
+        <br />
+        <br />
 
-        <label>Author</label>
+        <label>Author:</label>
+        <br />
         <input
           type="text"
           name="author"
           value={formData.author}
           onChange={handleChange}
         />
+        <br />
+        <br />
 
-        <label>Published Year</label>
+        <label>Published Year:</label>
+        <br />
         <input
           type="number"
           name="publishedYear"
           value={formData.publishedYear}
           onChange={handleChange}
         />
+        <br />
+        <br />
 
-        <label>Genre (comma separated)</label>
+        <label>Genre:</label>
+        <br />
         <input
           type="text"
           name="genre"
+          placeholder="Fiction, Drama"
           value={formData.genre}
           onChange={handleChange}
-          placeholder="Fiction, Drama"
         />
+        <br />
+        <br />
 
-        <label>Language</label>
+        <label>Language:</label>
+        <br />
         <input
           type="text"
           name="language"
           value={formData.language}
           onChange={handleChange}
         />
+        <br />
+        <br />
 
-        <label>Country</label>
+        <label>Country:</label>
+        <br />
         <input
           type="text"
           name="country"
           value={formData.country}
           onChange={handleChange}
         />
+        <br />
+        <br />
 
-        <label>Rating</label>
+        <label>Rating:</label>
+        <br />
         <input
           type="number"
           step="0.1"
@@ -120,24 +139,31 @@ export default function AddBookForm() {
           value={formData.rating}
           onChange={handleChange}
         />
+        <br />
+        <br />
 
-        <label>Summary</label>
+        <label>Summary:</label>
+        <br />
         <textarea
           name="summary"
           rows="3"
           value={formData.summary}
           onChange={handleChange}
         />
+        <br />
+        <br />
 
-        <label>Cover Image URL</label>
+        <label>Cover Image URL:</label>
+        <br />
         <input
           type="text"
           name="coverImageUrl"
           value={formData.coverImageUrl}
           onChange={handleChange}
         />
-
         <br />
+        <br />
+
         <button type="submit">Add Book</button>
       </form>
     </div>
