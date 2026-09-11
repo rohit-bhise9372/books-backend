@@ -101,7 +101,6 @@ export default function AddBookForm() {
         <input
           type="text"
           name="genre"
-          placeholder="Fiction, Drama"
           value={formData.genre}
           onChange={handleChange}
         />
