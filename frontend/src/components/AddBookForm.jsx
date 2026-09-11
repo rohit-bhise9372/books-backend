@@ -1,0 +1,145 @@
+import { useState } from "react";
+import axios from "axios";
+
+const API = "https://books-backend-c.vercel.app";
+
+export default function AddBookForm() {
+  const [formData, setFormData] = useState({
+    title: "",
+    author: "",
+    publishedYear: "",
+    genre: "",
+    language: "",
+    country: "",
+    rating: "",
+    summary: "",
+    coverImageUrl: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const newBook = {
+      ...formData,
+      publishedYear: Number(formData.publishedYear),
+      rating: Number(formData.rating),
+      genre: formData.genre.split(",").map((g) => g.trim()),
+    };
+
+    try {
+      const response = await axios.post(`${API}/books`, newBook);
+
+      console.log("Book Added:", response.data);
+      alert("Book added successfully!");
+
+      setFormData({
+        title: "",
+        author: "",
+        publishedYear: "",
+        genre: "",
+        language: "",
+        country: "",
+        rating: "",
+        summary: "",
+        coverImageUrl: "",
+      });
+    } catch (error) {
+      console.log(error);
+      alert("Failed to add book.");
+    }
+  };
+
+  return (
+    <div>
+      <h2>Add New Book</h2>
+
+      <form onSubmit={handleSubmit}>
+        <label>Title</label>
+        <input
+          type="text"
+          name="title"
+          value={formData.title}
+          onChange={handleChange}
+        />
+
+        <label>Author</label>
+        <input
+          type="text"
+          name="author"
+          value={formData.author}
+          onChange={handleChange}
+        />
+
+        <label>Published Year</label>
+        <input
+          type="number"
+          name="publishedYear"
+          value={formData.publishedYear}
+          onChange={handleChange}
+        />
+
+        <label>Genre (comma separated)</label>
+        <input
+          type="text"
+          name="genre"
+          value={formData.genre}
+          onChange={handleChange}
+          placeholder="Fiction, Drama"
+        />
+
+        <label>Language</label>
+        <input
+          type="text"
+          name="language"
+          value={formData.language}
+          onChange={handleChange}
+        />
+
+        <label>Country</label>
+        <input
+          type="text"
+          name="country"
+          value={formData.country}
+          onChange={handleChange}
+        />
+
+        <label>Rating</label>
+        <input
+          type="number"
+          step="0.1"
+          name="rating"
+          value={formData.rating}
+          onChange={handleChange}
+        />
+
+        <label>Summary</label>
+        <textarea
+          name="summary"
+          rows="3"
+          value={formData.summary}
+          onChange={handleChange}
+        />
+
+        <label>Cover Image URL</label>
+        <input
+          type="text"
+          name="coverImageUrl"
+          value={formData.coverImageUrl}
+          onChange={handleChange}
+        />
+
+        <br />
+        <button type="submit">Add Book</button>
+      </form>
+    </div>
+  );
+}
