@@ -25,7 +25,7 @@ export default function AllBooks() {
       <h2>All Books</h2>
 
       {books.length === 0 ? (
-        <p>No books found.</p>
+        <p>Loading...</p>
       ) : (
         books.map((book) => (
           <div key={book._id}>
