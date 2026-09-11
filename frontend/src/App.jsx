@@ -1,0 +1,21 @@
+import AllBooks from "./components/AllBooks";
+import BookDetails from "./components/BookDetails";
+import BookByAuthors from "./components/BookByAuthors";
+
+function App() {
+  return (
+    <div>
+      <AllBooks />
+
+      <hr />
+
+      <BookDetails />
+
+      <hr />
+
+      <BookByAuthors />
+    </div>
+  );
+}
+
+export default App;
