@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const API = "http://localhost:3000";
+const API = "https://books-backend-c.vercel.app";
 
 export default function BookDetails() {
   const [book, setBook] = useState(null);
