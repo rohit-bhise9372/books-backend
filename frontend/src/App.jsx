@@ -7,7 +7,7 @@ import BookByAuthors from "./components/BookByAuthors";
 function App() {
   return (
     <main>
-      <div>
+      
         <AddBookForm />
         <hr />
         <AllBooks />
@@ -15,7 +15,7 @@ function App() {
         <BookDetails />
         <hr />
         <BookByAuthors />
-      </div>
+     
     </main>
   );
 }
