@@ -42,25 +42,27 @@ export default function AllBooks() {
   };
 
   return (
-    <div>
-      <h2>All Books</h2>
+  <div className="books-container">
+    <h2>All Books</h2>
 
-      {successMessage && <p>{successMessage}</p>}
+    {successMessage && (
+      <p className="success-banner">{successMessage}</p>
+    )}
 
-      {books.length === 0 ? (
-        <p>Loading...</p>
-      ) : (
-        books.map((book) => (
-          <div key={book._id}>
-            <p>
-              {book.title}
-              <button onClick={() => handleDelete(book._id)}>
-                Delete
-              </button>
-            </p>
-          </div>
-        ))
-      )}
-    </div>
-  );
+    {books.length === 0 ? (
+      <p className="status-text">Loading...</p>
+    ) : (
+      <ul className="book-list">
+        {books.map((book) => (
+          <li key={book._id} className="book-item">
+            <span>{book.title}</span>
+            <button onClick={() => handleDelete(book._id)}>
+              Delete
+            </button>
+          </li>
+        ))}
+      </ul>
+    )}
+  </div>
+);
 }
