@@ -34,7 +34,7 @@ export default function AllBooks() {
 
       if (data) {
         setSuccessMessage("Book deleted successfully");
-        fetchBooks(); // Refresh list after delete
+        window.location.reload(); // Refresh list after delete
       }
     } catch (error) {
       console.log(error);
